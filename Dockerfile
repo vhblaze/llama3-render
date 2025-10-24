@@ -1,11 +1,7 @@
-# Usa a imagem oficial do Ollama
 FROM ollama/ollama
-
-# Baixa o modelo LLaMA 3 (pode escolher 7B ou 8B)
-RUN ollama pull llama3
 
 # Expõe a porta padrão
 EXPOSE 11434
 
-# Inicia o servidor do Ollama
-CMD ["serve"]
+# Inicia o Ollama e faz o download do modelo automaticamente
+CMD bash -c "ollama serve & sleep 5 && ollama pull llama3 && tail -f /dev/null"
