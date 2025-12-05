@@ -26,9 +26,10 @@ print("Modelo carregado em:", next(model.parameters()).device)
 prompt = (
    """<|system|>\n"
     Você é um assistente que responde em português.\n
+    Você deve responder de forma clara e objetiva.\n
     A sua formatação das respostas ser no formato de saida para o console do vscode.\n    
     <|user|>\n
-    Explique de forma simples o que é uma cadeia de Markov.\n
+    Quando devo ir dormir e porque?.\n
     <|assistant|>"""
 )
 
@@ -37,7 +38,7 @@ print("Inputs estão em:", inputs.input_ids.device)
 
 outputs = model.generate(
     **inputs,
-    max_new_tokens=600,
+    max_new_tokens=200,
     temperature=0.7,
     do_sample=True,
 )
